@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>xionghushan</title>
+    <link rel="stylesheet" href="assets/ebook/style.css">
+    <script src="assets/ebook/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="sample-container">
+      <div></div>
+    </div>
+    <div class="container content">
+      <p align="center"><a href="http://www.xionghushan.com" target="_blank" class="btn btn-success">返回首页</a></p>
+    </div>
+    <script src="assets/ebook/html2canvas.min.js"></script>
+    <script src="assets/ebook/three.min.js"></script>
+    <script src="assets/ebook/pdf.min.js"></script>
+    <script src="assets/ebook/3dflipbook.min.js"></script>
+    <script type="text/javascript">
+      function theKingIsBlackPageCallback(n) {
+        return {
+          type: 'image',
+          src: 'images/ebook/'+(n+1)+'.jpg',
+          interactive: false
+        };
+      }
+      $('.sample-container div').FlipBook({
+        pageCallback: theKingIsBlackPageCallback,
+        pages: 8,
+        propertiesCallback: function(props) {
+          props.cover.color = 0x000000;
+          return props;
+        },
+        template: {
+          html: 'assets/templates/default-book-view.html',
+          styles: [
+          'assets/ebook/short-white-book-view.css'
+          ],
+          links: [
+            {
+              rel: 'stylesheet',
+              href: 'assets/ebook/font-awesome.min.css'
+            }
+          ],
+          script: 'assets/ebook/default-book-view.js',
+          sounds: {
+            startFlip: 'assets/sounds/start-flip.mp3',
+            endFlip: 'assets/sounds/end-flip.mp3'
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
